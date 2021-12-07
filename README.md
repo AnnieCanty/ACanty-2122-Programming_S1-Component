@@ -10,3 +10,5 @@ Point and CLick Dialogue System Compontent with simple pause menu
 
 
 *Pause menu* - Very simple, without the need for additional scenes. Player presses Esc for enable, press resume button to continue play. Pauses player movement.  
+
+Unity Package - *'ACanty_Programming_Component_S1_2122'*
