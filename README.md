@@ -1,7 +1,7 @@
 # ACanty-2122-Programming_S1-Component
 3909732, ACanty-2122-Programming_S1-Component Submission
 
-Point and Click Dialogue System Compontent with simple pause menu
+Point and Click Dialogue System Compontent with simple pause menu (2D PROJECT)
 
 *Point and Click* - Click on the screen and the player moves/follows to there
 
