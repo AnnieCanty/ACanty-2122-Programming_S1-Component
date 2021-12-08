@@ -153,7 +153,13 @@ Also make a button (UI -> Button), and name it 'Start dialogue', resize and reco
 ## 2 
 
 Create 3 scripts. Name them 'DialogueManager', 'Dialogue' and 'DialogueTrigger'
-In Dialogue
+In Dialogue:
+[System.Serializable]
+
+	public string name;
+
+	[TextArea(3, 10)]
+	public string[] sentences;
 
 In DialogueTrigger 
 
