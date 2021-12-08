@@ -25,7 +25,7 @@ Create a new Private variable.
         Once you have tested this has worked you can remove ``Update()`` from the code.  
 
 ## 3
-From here, we need to check if the player sclicks for the object to move, and if they do, the coordinates of where they click will also need to be found. 
+From here, we need to check if the player clicks for the object to move, and if they do, the coordinates of where they click will also need to be found. 
 
 Create an if statement (In unity, type ``IF`` and press TAB twice in order to generate an if statement structure.)
 
@@ -33,8 +33,8 @@ Create an if statement (In unity, type ``IF`` and press TAB twice in order to ge
         {       
             target = new Vector2(mousePos.x, transform.position.y);
         }``
-        This will ensure that players can move anwhere on the x-axis, while keeping them in the same y-axis position when they click anywhere on the screen.
-        Now, to move the player, we need to add to the ``Update()`` Function, the player positioning, and their mmovement speed once a click has been initiated. 
+        This will ensure that players can move anywhere on the x-axis, while keeping them in the same y-axis position when they click anywhere on the screen.
+        Now, to move the player, we need to add to the ``Update()`` Function, the player positioning, and their movement speed once a click has been initiated. 
         
        ` `transform.position = Vector2.MoveTowards(transform.position, target, Time.deltaTime * 5f);``
       
@@ -51,28 +51,28 @@ Now you can save your script and click play within the Unity scene. By clicking 
 
 ## 1 
 
-Create an EmptyGameObject in he canvas, name is 'Content'. Re-size it to fit the space you want to scroll within. Drag all text objets you have created for scrolling on this object, to make them children object of 'Content'.
+Create an EmptyGameObject in the canvas, name is 'Content'. Re-size it to fit the space you want to scroll within. Drag all text objects you have created for scrolling on this object, to make them children objects of 'Content'.
 
 ## 2
 
-In the Inspector of the 'Content' object, select 'Add component' and search 'Vertical Layout Group'. Select it and give borders and spacing to your text that you see fit. Additionally, add the 'Content size fitter' compondent to 'Content' too, and set Vertical fir to preffered size. 
+In the Inspector of the 'Content' object, select 'Add component' and search 'Vertical Layout Group'. Select it and give borders and spacing to your text that you see fit. Additionally, add the 'Content size fitter' component to 'Content' too, and set Vertical fir to preferred size. 
 
 ## 3
 
-Make the 'Content' GameObject a child obect of a new Empty Game Object, 'ScrollArea'. To 'ScrollArea', add the 'ScrollRect' component, and untick the 'Horizontal' button, and ajust the Scroll Sensitivity as you see fit. To avoid UI overlap when scrolling, also apply the 'RectMask' component to ScrollArea' to block titles etc out of the scrolling text.
+Make the 'Content' GameObject a child object of a new Empty Game Object, 'ScrollArea'. To 'ScrollArea', add the 'ScrollRect' component, and untick the 'Horizontal' button, and adjust the Scroll Sensitivity as you see fit. To avoid UI overlap when scrolling, also apply the 'RectMask' component to ScrollArea' to block titles etc out of the scrolling text.
 
 ## 4
 
-Initiate play and either use the middle mouse/trackpad to scroll normally ajnd see the text scroll with it, or click and drag where you want to scroll. 
+Initiate play and either use the middle mouse/trackpad to scroll normally and see the text scroll with it, or click and drag where you want to scroll. 
        This is how to create scrolling text in Unity. 
        
 ## Tutorial Three - Pause Menu
 
 ## 1 
 
-In your project, create a canvas, and initiate 2D mode in the scene view. (Top left of viewport). Right-click on the Canvas, and creae a panel in the UI menu, and change the panel colour to a slightly transparent black background. Change the source image of the panel to 'None', and rename the panel to PauseMenuUI
+In your project, create a canvas, and initiate 2D mode in the scene view. (Top left of viewport). Right-click on the Canvas, and create a panel in the UI menu, and change the panel colour to a slightly transparent black background. Change the source image of the panel to 'None', and rename the panel to PauseMenuUI
 
-Create a button, and resize using the Rect Tool (T). Disable the image in inspector. Select and size text as disired, name 'Resume', change colour, add shadow and place how you want it. Turn on Image, and reduce opacity, also alter change highlight and selected colour at different opacities, and change 'Navigation' to none, for better player imput and feedback.
+Create a button, and resize using the Rect Tool (T). Disable the image in the inspector. Select and size text as desired, name 'Resume', change colour, add shadow and place how you want it. Turn on Image, and reduce opacity, also alter highlight and selected colour at different opacities, and change 'Navigation' to none, for better player input and feedback.
 
 Duplicate the buttons and change the text and names for 'Menu' and 'Exit'
 This is the UI Setup.
@@ -138,7 +138,7 @@ Add functionality to these buttons. Add the GameObject (Pause Menu Panel) into t
 
 ## 5 
 
-In oder to ensure that these LoadMenu and Quit functions work, add ``using UnityEngine.SceneManagement;`` to the top of the script, and all relevanty scripts are in the Game Build Settings, under the correct names as refered to in the script. 
+In order to ensure that these LoadMenu and Quit functions work, add ``using UnityEngine.SceneManagement;`` to the top of the script, and all relevant scripts are in the Game Build Settings, under the correct names as referred to in the script. 
 Make sure to test all of these. 
  This is how to create a pause menu in Unity.
  
@@ -147,7 +147,7 @@ Make sure to test all of these.
 
 ## 1
 
-Setup a canvas with panel and 2 text elements in the unity project. (Can be in a 2D or 3D project). To do this, right click in the hierarchy, UI-> Canvas, Panel and Text.Resize and colour the panle as desired (Ideally lower 3rd screen). Name the text objects 'Name' and 'Dialogue'. Also make a 'Continue' button for this panel.
+Set Up a canvas with panel and 2 text elements in the unity project. (Can be in a 2D or 3D project). To do this, right click in the hierarchy, UI-> Canvas, Panel and Text.Resize and colour the panel as desired (Ideally lower 3rd screen). Name the text objects 'Name' and 'Dialogue'. Also make a 'Continue' button for this panel.
 Also make a button (UI -> Button), and name it 'Start dialogue', resize and recolour as desired.
 
 ## 2 
@@ -233,10 +233,10 @@ Then, below the Class name, add
 ##3
 
 Create an empty game object and apply the dialogue manager to it. Drag in the name and dialogue text objects. 
-Now apply the dialgoue trigger to to the button and make an on click event (TriggerDialogue()) to begin the dialogue, and type in the dialogue and name. 
+Now apply the dialogue trigger to the button and make an on click event (TriggerDialogue()) to begin the dialogue, and type in the dialogue and name. 
 For the continue button, apply the Dialogue Manager,Onclickevent of the button, and add DisplayNextSentence() to the, and add an OnClick event , 
 
-##
+##4
 For additional effects (Eg typing effect) or animation in the DialogueManager script, write:
 
 
@@ -257,12 +257,12 @@ in the above function.
 
 
 
-For animation, go to Window -> Animation. Selcect the Panel (with the text as child objects, and create a new animation clip. For the open clip, press the record button in the animator. 
+For animation, go to Window -> Animation. Select the Panel (with the text as child objects, and create a new animation clip. For the open clip, press the record button in the animator. 
 Select the Y position of the panel and copy it, move the Y-Axis of the panel slightly and re-paste the coordinate. 
 Create a new close animation of the same panel. Press record again, select the panel, press shift and move the panel below the canvas. 
 
 Now open the animator (Window -> Animator, where the two animators should be. Set the close animation as the default state (Right click -> Default state). Now create a transition from the closed state to the open and then the opened to the closed. 
-Go to the peramiter tab and press the + icon. Create a new bool perameter called IsOpen. Click on the transitions between Open and Closed, apply the peraniter (true for closed, false for open)and ensure to turn off exit time for both. 
+Go to the parameter tab and press the + icon. Create a new bool parameter called IsOpen. Click on the transitions between Open and Closed, apply the peraniter (true for closed, false for open)and ensure to turn off exit time for both. 
 In the dialogueManager script, add a reference to the Animator: public Animator animator;
 
 And then write within public void StartDialogue (Dialogue dialogue):
@@ -276,8 +276,12 @@ Then create,
 	}
 
 Be sure to add the animator to the dialogue manager and test.
-##
+
+##5
 
 From here, you are able to attach the DialogueTrigger script to an object (Eg 2D sprite)and fill out dialogue
-Some additions made could be allowing audio clips in your system, or having them set within a trigger, or with key (EG C to start, V to continue). If using these/a 3D project, make sure to alter scripts to make them work in eg (Eg for colliders) and apply non-2D rigidbody and collidr to the trigger object. 
-That is how to make a Dialogue Sytem in Unity.
+Some additions made could be allowing audio clips in your system, or having them set within a trigger, or with a key (EG C to start, V to continue). If using these/a 3D project, make sure to alter scripts to make them work in eg (Eg for colliders) and apply non-2D rigidbody and collider to the trigger object. 
+
+
+That is how to make a Dialogue System in Unity.
+
