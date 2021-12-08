@@ -37,3 +37,24 @@ Continued Using Tutorials
 
 Decided to create pause menu tutorial in order to support with future UI endevors and curret 3D projects. Followed tutorial with no isses and now need to understand how to further implement in different styles eg colours, images etc. Possibly spent more time than required setting up and following code
 
+## 1/11/21
+Working on 4th tutorial, dialogue system.
+
+Base tutorial worked well, especially with UI practice I have had from the last few tutorials. The tutorial, however, does not fully cover 3D games, and may not work with my existing controller, which doesn't pickup mouse clicks. Will need to make alterations (like buttons or limiting character controller) and set to a trigger to work better in my 3D game. 
+
+## 13/11/21
+
+Unity 2D tutorial setup, re-followed my PAC tutorial, and latered slightly to allow player to also move on the Y-axis. Since looking at changes I have made to my Dialogue System code, I can utilise these to work with the point and click, but this may need some assistance.
+This comes from some support and changes I was assisted with in the development and additions to my dialogue systems for my 3DL work. 
+
+## 25/11/21
+
+Implemented the dialogue system into my component, but have noticed that the implementation does not work, including errors in my console from the code. I am not sure yet what is causing this. Due to other deadlines and constraints, I plan to return to this and ask for assistance in fixing this.
+In the meantime I will test this using my own code from my other project and comparing for errors, completing the animation section to see if that is causing problems, and looking into solutions on my own.
+
+## 07/12/21
+
+Component completed, with the addition of a simple paue menu to give more usability to the component. The main issue with my dialogue system had been identified with help from a classmate, which I then fixed. 
+My initial error was in making the 2D project and implementing 3D components, which I did not noice, when these were changed to 2D sprited, all scripts worked together. The fix was
+also aided by my organising of files and completing the animator component, making the problem clearer. 
+Overall, from this mistake, I have learned to check the dimensions of my project, and to pay closer attention to the settings/each aspect that can impact my scripts. It has been a useful experience to learn more unity aspects (UI, Triggers, etc).
