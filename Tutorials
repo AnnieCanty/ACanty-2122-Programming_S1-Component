@@ -154,7 +154,10 @@ Also make a button (UI -> Button), and name it 'Start dialogue', resize and reco
 
 Create 3 scripts. Name them 'DialogueManager', 'Dialogue' and 'DialogueTrigger'
 In Dialogue:
+At the top of the script, write:
 [System.Serializable]
+
+Below the class name, write:
 
 	public string name;
 
@@ -163,17 +166,89 @@ In Dialogue:
 
 In DialogueTrigger 
 
+Below the class name write
+
+public Dialogue dialogue;
+
+       	public void TriggerDialogue ()
+	{
+		FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+	}
+
 In DialogueManager
 
+At the top of the script, add 
+using UnityEngine.UI;
+
+Then, below the Class name, add 
+
+        public Text nameText;
+	public Text dialogueText;
+	private Queue<string> sentences;
+	
+	In start, write:
+	void Start () 
+	{
+		sentences = new Queue<string>();
+	}
+	and then
+	
+		public void StartDialogue (Dialogue dialogue)
+	{
+		animator.SetBool("IsOpen", true);
+
+		nameText.text = dialogue.name;
+
+		sentences.Clear();
+
+		foreach (string sentence in dialogue.sentences)
+		{
+			sentences.Enqueue(sentence);
+		}
+
+		DisplayNextSentence();
+	}
+	
+	Under this, make a new methods, public void DisplayNextSentence ()
+	
+	{
+		if (sentences.Count == 0)
+		{
+			EndDialogue();
+			return;
+		}
+
+		string sentence = sentences.Dequeue();
+		StopAllCoroutines();
+		StartCoroutine(TypeSentence(sentence));
+	}
+	
+	void EndDialogue()
+	{
+		
+	}
 
 
+##3
 
+Create an empty game object and apply the dialogue manager to it. Drag in the name and dialogue text objects. 
+Now apply the dialgoue trigger to an object such as a 2D sprite (with collider and rigidbody), and type in the dialogue and name. 
 
-
+##
 For additional effects (Eg typing effect) or animation in the DialogueManager script, write:
 
 
-for Typing effect
+for Typing effect, below DisplayNextSentence(), write in:
+	IEnumerator TypeSentence (string sentence)
+	{
+		dialogueText.text = "";
+		foreach (char letter in sentence.ToCharArray())
+		{
+			dialogueText.text += letter;
+			yield return null;
+		}
+
+
 
 For animation, go to Window -> Animation. Selcect the Panel (with the text as child objects, and create a new animation clip. For the open clip, press the record button in the animator. 
 Select the Y position of the panel and copy it, move the Y-Axis of the panel slightly and re-paste the coordinate. 
@@ -181,7 +256,20 @@ Create a new close animation of the same panel. Press record again, select the p
 
 Now open the animator (Window -> Animator, where the two animators should be. Set the close animation as the default state (Right click -> Default state). Now create a transition from the closed state to the open and then the opened to the closed. 
 Go to the peramiter tab and press the + icon. Create a new bool perameter called IsOpen. Click on the transitions between Open and Closed, apply the peraniter (true for closed, false for open)and ensure to turn off exit time for both. 
-In the dialogue manager script, add:
+In the dialogueManager script, add a reference to the Animator: 	public Animator animator;
+
+And then write within public void StartDialogue (Dialogue dialogue):
+
+        animator.SetBool("IsOpen", true);
+
+Then create, 
+	void EndDialogue()
+	{
+		animator.SetBool("IsOpen", false);
+	}
+
+Be sure to add the animator to the dialogue manager and test.
+##
 
 From here, you are able to attach the DialogueTrigger script to an object (Eg 2D sprite)and fill out dialogue
 Some additions made could be allowing audio clips in your system, or having them set within a trigger, or with key (EG C to start, V to continue). If using these/a 3D project, make sure to alter scripts to make them work in eg (Eg for colliders) and apply non-2D rigidbody and collidr to the trigger object. 
