@@ -147,7 +147,7 @@ Make sure to test all of these.
 
 ## 1
 
-Setup a canvas with panel and 2 text elements in the unity project. (Can be in a 2D or 3D project). To do this, right click in the hierarchy, UI-> Canvas, Panel and Text.Resize and colour the panle as desired (Ideally lower 3rd screen). Name the text objects 'Name' and 'Dialogue'.
+Setup a canvas with panel and 2 text elements in the unity project. (Can be in a 2D or 3D project). To do this, right click in the hierarchy, UI-> Canvas, Panel and Text.Resize and colour the panle as desired (Ideally lower 3rd screen). Name the text objects 'Name' and 'Dialogue'. Also make a 'Continue' button for this panel.
 Also make a button (UI -> Button), and name it 'Start dialogue', resize and recolour as desired.
 
 ## 2 
@@ -156,6 +156,8 @@ Create 3 scripts. Name them 'DialogueManager', 'Dialogue' and 'DialogueTrigger'
 In Dialogue:
 At the top of the script, write:
 [System.Serializable]
+
+Also, do not derive from monobehaviour.
 
 Below the class name, write:
 
@@ -219,8 +221,7 @@ Then, below the Class name, add
 		}
 
 		string sentence = sentences.Dequeue();
-		StopAllCoroutines();
-		StartCoroutine(TypeSentence(sentence));
+		
 	}
 	
 	void EndDialogue()
@@ -232,7 +233,8 @@ Then, below the Class name, add
 ##3
 
 Create an empty game object and apply the dialogue manager to it. Drag in the name and dialogue text objects. 
-Now apply the dialgoue trigger to an object such as a 2D sprite (with collider and rigidbody), and type in the dialogue and name. 
+Now apply the dialgoue trigger to to the button and make an on click event (TriggerDialogue()) to begin the dialogue, and type in the dialogue and name. 
+For the continue button, apply the Dialogue Manager,Onclickevent of the button, and add DisplayNextSentence() to the, and add an OnClick event , 
 
 ##
 For additional effects (Eg typing effect) or animation in the DialogueManager script, write:
@@ -247,6 +249,11 @@ for Typing effect, below DisplayNextSentence(), write in:
 			dialogueText.text += letter;
 			yield return null;
 		}
+and add
+
+                StopAllCoroutines();
+		StartCoroutine(TypeSentence(sentence)); 
+in the above function. 
 
 
 
@@ -256,7 +263,7 @@ Create a new close animation of the same panel. Press record again, select the p
 
 Now open the animator (Window -> Animator, where the two animators should be. Set the close animation as the default state (Right click -> Default state). Now create a transition from the closed state to the open and then the opened to the closed. 
 Go to the peramiter tab and press the + icon. Create a new bool perameter called IsOpen. Click on the transitions between Open and Closed, apply the peraniter (true for closed, false for open)and ensure to turn off exit time for both. 
-In the dialogueManager script, add a reference to the Animator: 	public Animator animator;
+In the dialogueManager script, add a reference to the Animator: public Animator animator;
 
 And then write within public void StartDialogue (Dialogue dialogue):
 
